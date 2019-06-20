@@ -232,7 +232,7 @@
 
 
 
-height:50vh;
+height:65vh;
 ">
     
     <!-- 主页  -->
@@ -241,7 +241,7 @@ height:50vh;
     <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/user/erondu/1200x900)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
@@ -401,7 +401,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="不要使用LET"><a href="#不要使用LET" class="headerlink" title="不要使用LET"></a>不要使用LET</h1><h4 id="1-1如果只用来判断不可变的变量时，不要使用LET"><a href="#1-1如果只用来判断不可变的变量时，不要使用LET" class="headerlink" title="1.1如果只用来判断不可变的变量时，不要使用LET"></a>1.1如果只用来判断<strong>不可变的变量</strong>时，不要使用LET</h4><p>举个例子：</p>
+        <h1 id="不要使用LET"><a href="#不要使用LET" class="headerlink" title="不要使用LET"></a>不要使用LET</h1><h2 id="1-1如果只用来判断不可变的变量时，不要使用LET"><a href="#1-1如果只用来判断不可变的变量时，不要使用LET" class="headerlink" title="1.1如果只用来判断不可变的变量时，不要使用LET"></a>1.1如果只用来判断<strong>不可变的变量</strong>时，不要使用LET</h2><p>举个例子：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(str: <span class="type">String</span>?)</span></span> &#123;</span><br><span class="line">    str?.let &#123; <span class="comment">/*....*/</span>   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果你查看生成的Java代码时：</p>
@@ -412,7 +412,7 @@ height:50vh;
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(str: <span class="type">String</span>?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Do Something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>str</code> 在 <code>if</code> 判断后会被自动转换成非空变量，反编译后的Java代码也不会生成其它额外变量。</p>
-<h4 id="1-2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"><a href="#1-2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET" class="headerlink" title="1.2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"></a>1.2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET</h4><p>大多数情况下，我们在给一个变量的内容进行赋值前都会判空。</p>
+<h2 id="2-如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"><a href="#2-如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET" class="headerlink" title="2 如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"></a>2 如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET</h2><p>大多数情况下，我们在给一个变量的内容进行赋值前都会判空。</p>
 <p>举个<code>webview</code>的例子：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line">webviewSetting?.let &#123;</span><br><span class="line">    it.javaScriptEnabled = <span class="literal">true</span></span><br><span class="line">    it.databaseEnabled = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -420,7 +420,7 @@ height:50vh;
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐</span></span><br><span class="line">webviewSetting?.run &#123;</span><br><span class="line">    javaScriptEnabled = <span class="literal">true</span></span><br><span class="line">    databaseEnabled = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>run</code>，它会把这个变量作为<code>this</code>发送到判断体内，这样可以直接使用这个变量，少写一串烦人的<code>it</code>，无形间加快了开发速度。</p>
-<h4 id="1-3如果想链式调用这个变量，不要使用LET"><a href="#1-3如果想链式调用这个变量，不要使用LET" class="headerlink" title="1.3如果想链式调用这个变量，不要使用LET"></a>1.3如果想链式调用这个变量，不要使用LET</h4><p>假如现在有一个可为空的<code>List&lt;String&gt;</code>，我们想要先打印出list的size，然后分别打印出每一条string，之前可能会这样做：</p>
+<h2 id="3-如果想链式调用这个变量，不要使用LET"><a href="#3-如果想链式调用这个变量，不要使用LET" class="headerlink" title="3 如果想链式调用这个变量，不要使用LET"></a>3 如果想链式调用这个变量，不要使用LET</h2><p>假如现在有一个可为空的<code>List&lt;String&gt;</code>，我们想要先打印出list的size，然后分别打印出每一条string，之前可能会这样做：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line">stringList?.let &#123;</span><br><span class="line">    println(<span class="string">"Total Count: <span class="subst">$&#123;it.size&#125;</span>"</span>)</span><br><span class="line">    it</span><br><span class="line">&#125;?.forEach&#123; println(it) &#125;</span><br></pre></td></tr></table></figure>
 
 <p>这样做看起来不是很好看，因为在<code>let{ }</code>的最后必须返回一个<code>it</code>以达到链式调用，这种情况下，我们可以使用<code>also{}</code></p>
@@ -430,13 +430,13 @@ height:50vh;
 <blockquote>
 <p>更多关于kotlin基础方法 run  let with also 的使用方法，<a href="https://medium.com/@elye.project/mastering-kotlin-standard-functions-run-with-let-also-and-apply-9cd334b0ef84" target="_blank" rel="noopener">可以查看这篇文章</a></p>
 </blockquote>
-<h1 id="使用LET的场景"><a href="#使用LET的场景" class="headerlink" title="使用LET的场景"></a>使用LET的场景</h1><h4 id="2-1如果判断可变变量，使用LET"><a href="#2-1如果判断可变变量，使用LET" class="headerlink" title="2.1如果判断可变变量，使用LET"></a>2.1如果判断可变变量，使用LET</h4><p>这是因为，如果是可变变量，即便使用<code>if</code>判断了不为空，在判断体内执行时，变量也可能会在代码执行到某一时刻变成空。</p>
+<h1 id="使用LET的场景"><a href="#使用LET的场景" class="headerlink" title="使用LET的场景"></a>使用LET的场景</h1><h2 id="1-如果判断可变变量，使用LET"><a href="#1-如果判断可变变量，使用LET" class="headerlink" title="1 如果判断可变变量，使用LET"></a>1 如果判断可变变量，使用LET</h2><p>这是因为，如果是可变变量，即便使用<code>if</code>判断了不为空，在判断体内执行时，变量也可能会在代码执行到某一时刻变成空。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> str: String? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">()</span></span> &#123;</span><br><span class="line">    str?.let &#123; </span><br><span class="line">      println(str.length)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>而且使用<code>run</code>判断的话，编译器不会自动帮我们转为非空，<code>if</code>就不能保证，我们仍然要使用<code>?</code>来操作这个变量的方法或值</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> str: String? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (str != <span class="literal">null</span>) &#123;</span><br><span class="line">        println(str?.length)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-2如果要在判断体内使用其它外部变量，使用LET"><a href="#2-2如果要在判断体内使用其它外部变量，使用LET" class="headerlink" title="2. 2如果要在判断体内使用其它外部变量，使用LET"></a>2. 2如果要在判断体内使用其它外部变量，使用LET</h4><p>举个简单例子：</p>
+<h2 id="2-如果要在判断体内使用其它外部变量，使用LET"><a href="#2-如果要在判断体内使用其它外部变量，使用LET" class="headerlink" title="2 如果要在判断体内使用其它外部变量，使用LET"></a>2 如果要在判断体内使用其它外部变量，使用LET</h2><p>举个简单例子：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">var</span> javaScriptEnabled = <span class="literal">false</span></span><br><span class="line"><span class="keyword">var</span> databaseEnabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">webviewSetting?.run &#123;</span><br><span class="line">    javaScriptEnabled = javaScriptEnabled</span><br><span class="line">    databaseEnabled = databaseEnabled</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这会让编译器困惑，当然你可以给外部变量改名，但是这样使用仍然会很容易出错。</p>
@@ -446,7 +446,7 @@ height:50vh;
 <p>这种情况下就推荐使用<code>let</code>了：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 推荐</span></span><br><span class="line"><span class="keyword">var</span> javaScriptEnabled = <span class="literal">false</span></span><br><span class="line"><span class="keyword">var</span> databaseEnabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">webviewSetting?.let &#123;</span><br><span class="line">    javaScriptEnabled = it.javaScriptEnabled</span><br><span class="line">    databaseEnabled = it.databaseEnabled</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-3-如果你的前面有一长串可空链，使用let来消除额外的-空判断"><a href="#2-3-如果你的前面有一长串可空链，使用let来消除额外的-空判断" class="headerlink" title="2.3 如果你的前面有一长串可空链，使用let来消除额外的?空判断"></a>2.3 如果你的前面有一长串可空链，使用let来消除额外的<code>?</code>空判断</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(string: <span class="type">String</span>?)</span></span>: List&lt;<span class="built_in">Char</span>&gt;? &#123;</span><br><span class="line">    <span class="keyword">return</span> string?.asIterable()?.distinct()?.sorted()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-果你的前面有一长串可空链，使用let来消除额外的-空判断"><a href="#3-果你的前面有一长串可空链，使用let来消除额外的-空判断" class="headerlink" title="3 果你的前面有一长串可空链，使用let来消除额外的?空判断"></a>3 果你的前面有一长串可空链，使用let来消除额外的<code>?</code>空判断</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">process</span><span class="params">(string: <span class="type">String</span>?)</span></span>: List&lt;<span class="built_in">Char</span>&gt;? &#123;</span><br><span class="line">    <span class="keyword">return</span> string?.asIterable()?.distinct()?.sorted()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这么一长串<code>?</code>空判断，在反编译成Java代码后，你会发现很多不必要的额外空检查，因为在第一个<code>?</code>的时候就可能返回空值了，后面的空判断都是不必要的:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> List <span class="title">process</span><span class="params">(@Nullable String string)</span> </span>&#123;</span><br><span class="line">   List var2;</span><br><span class="line">   <span class="keyword">if</span> (string != <span class="keyword">null</span>) &#123;</span><br><span class="line">      Iterable var10000 = StringsKt.asIterable(</span><br><span class="line">                           (CharSequence)string);</span><br><span class="line">      <span class="keyword">if</span> (var10000 != <span class="keyword">null</span>) &#123;</span><br><span class="line">         var2 = CollectionsKt.distinct(var10000);</span><br><span class="line">         <span class="keyword">if</span> (var2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            var2 = CollectionsKt.sorted((Iterable)var2);</span><br><span class="line">            <span class="keyword">return</span> var2;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   var2 = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">return</span> var2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -490,7 +490,7 @@ height:50vh;
         verify:false, 
         appId: "tjLlW5EhbJ47eozm8EvS27Cr-gzGzoHsz",
         appKey: "IJiJprCkYajmTkPTaKljkBRQ",
-        placeholder: "",
+        placeholder: "是否输入一些东西来证明自己存在过",
         path:window.location.pathname, 
         avatar:'mm' 
     });
@@ -576,7 +576,7 @@ height:50vh;
     <div class="busuanzi-container">
     
      
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"></span> 号适格者，欢迎:)</span>
     
     </div>
     
@@ -593,13 +593,13 @@ height:50vh;
 
 
 
-top:50vh;
+top:65vh;
 
     >
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#不要使用LET"><span class="toc-number">1.</span> <span class="toc-text">不要使用LET</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1如果只用来判断不可变的变量时，不要使用LET"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1.1如果只用来判断不可变的变量时，不要使用LET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">1.2如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3如果想链式调用这个变量，不要使用LET"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">1.3如果想链式调用这个变量，不要使用LET</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用LET的场景"><span class="toc-number">2.</span> <span class="toc-text">使用LET的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1如果判断可变变量，使用LET"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">2.1如果判断可变变量，使用LET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2如果要在判断体内使用其它外部变量，使用LET"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">2. 2如果要在判断体内使用其它外部变量，使用LET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-如果你的前面有一长串可空链，使用let来消除额外的-空判断"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">2.3 如果你的前面有一长串可空链，使用let来消除额外的?空判断</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#不要使用LET"><span class="toc-number">1.</span> <span class="toc-text">不要使用LET</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1如果只用来判断不可变的变量时，不要使用LET"><span class="toc-number">1.1.</span> <span class="toc-text">1.1如果只用来判断不可变的变量时，不要使用LET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET"><span class="toc-number">1.2.</span> <span class="toc-text">2 如果你只想使用这个变量的内容，不会操作除它之外的其它变量，可以不使用LET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-如果想链式调用这个变量，不要使用LET"><span class="toc-number">1.3.</span> <span class="toc-text">3 如果想链式调用这个变量，不要使用LET</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用LET的场景"><span class="toc-number">2.</span> <span class="toc-text">使用LET的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-如果判断可变变量，使用LET"><span class="toc-number">2.1.</span> <span class="toc-text">1 如果判断可变变量，使用LET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如果要在判断体内使用其它外部变量，使用LET"><span class="toc-number">2.2.</span> <span class="toc-text">2 如果要在判断体内使用其它外部变量，使用LET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-果你的前面有一长串可空链，使用let来消除额外的-空判断"><span class="toc-number">2.3.</span> <span class="toc-text">3 果你的前面有一长串可空链，使用let来消除额外的?空判断</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

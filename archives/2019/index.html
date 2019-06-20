@@ -351,13 +351,7 @@
                 <span>Kotlin 不要只使用let进行空判断</span>
         </a>
         <div class="abstract-content">
-            不要使用LET1.1如果只用来判断不可变的变量时，不要使用LET举个例子：
-1234// 不推荐fun process(str: String?) &#123;    str?.let &#123; /*....*/   &#125;&#125;
-
-如果你查看生成的Java代码时：
-123456public final void process(@Nullable String str) &#123;   if (str != null) &#123;      boolean var4 = false;//生成了额外变量      /*....*/   &#125;&#125;
-
-它会...
+            随着Kotlin空安全的特性被越来越多的人所知晓，每个人几乎都会使用let进行空判断
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -455,7 +449,7 @@
     <div class="busuanzi-container">
     
      
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"></span> 号适格者，欢迎:)</span>
     
     </div>
     
