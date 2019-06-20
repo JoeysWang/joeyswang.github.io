@@ -13,9 +13,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="乔伊苏">
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="John Doe">
+    <meta name="copyright" content="乔伊苏">
     
     <meta name="keywords" content="Joeys,乔伊苏,kotlin">
     
@@ -187,7 +187,7 @@
 }( typeof global !== "undefined" ? global : this ) );
 </script>
 
-    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="icon" href="/assets/favicon.png">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
     <link rel="preload" href="/scripts/main.js" as="script">
@@ -351,13 +351,13 @@
                 <span>Kotlin 不要只使用let进行空判断</span>
         </a>
         <div class="abstract-content">
-            不要使用LET1.如果只用来判断不可变的变量时，不要使用LET举个例子：
+            不要使用LET1.1如果只用来判断不可变的变量时，不要使用LET举个例子：
 1234// 不推荐fun process(str: String?) &#123;    str?.let &#123; /*....*/   &#125;&#125;
 
 如果你查看生成的Java代码时：
 123456public final void process(@Nullable String str) &#123;   if (str != null) &#123;      boolean var4 = false;//生成了额外变量      /*....*/   &#125;&#125;
 
-它会生...
+它会...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -554,7 +554,7 @@ jsonContent:
     <script>
     var siteMeta = {
         root: "/",
-        author: "John Doe"
+        author: "乔伊苏"
     }
 </script>
     <!-- CDN failover -->
